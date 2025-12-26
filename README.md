@@ -104,3 +104,4 @@ These gaps are intentionally surfaced through failing tests.
 npm install
 npx playwright test
 ```
+npx playwright test ./fileName.spec.ts --ui
