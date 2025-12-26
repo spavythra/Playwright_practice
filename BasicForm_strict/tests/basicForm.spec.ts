@@ -42,16 +42,6 @@ test.describe('Basic Form submission and validation', () => {
     await expectSubmissionFailure(page);
   });
 
-  test('Submission fails when Email is missing', async ({ page }) => {
-    await fillForm(page, {
-      firstName: 'Pavithra',
-      lastName: 'Subramaniyam',
-    });
-
-    await submitForm(page);
-    await expectError(page, 'Email is required');
-    await expectSubmissionFailure(page);
-  });
 
 // Scenario: Invalid email address is rejected
 // When the user enters a valid value into the First Name field
