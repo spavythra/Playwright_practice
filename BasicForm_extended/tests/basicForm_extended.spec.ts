@@ -1,6 +1,7 @@
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { openBasicForm, fillForm, submitForm, disabledSubmit } from './helpers/formLocators';
 import { expectSubmissionSuccess, expectSubmissionFailure, expectError } from './helpers/assertions';
+import { answerSurveyQuestions, selectMultipleOptions } from './helpers/surveyHelpers.ts';
 
 test.describe('Basic Form submission and validation', () => {
 
@@ -43,6 +44,28 @@ test.describe('Basic Form submission and validation', () => {
     await expectSubmissionFailure(page);
   });
 
+  test('Submission fails when Lastname is empty', async ({ page }) => {
+    await fillForm(page, {
+      firstName: 'Pavithra',
+      email: 'example@example.com',
+    });
+    await submitForm(page);
+
+    await expectError(page, 'Last Name is required');
+    await expectSubmissionFailure(page);
+  });
+
+  test('Submission fails when Firstname is missing', async ({ page }) => {
+    await fillForm(page, {
+      lastName: 'Subramaniyam',
+      email: 'example@example.com',
+    });
+
+    await submitForm(page);
+    await expectError(page, 'First Name is required');
+    await expectSubmissionFailure(page);
+  });
+
   test('Submission fails when Email is missing', async ({ page }) => {
     await fillForm(page, {
       firstName: 'Pavithra',
@@ -53,6 +76,8 @@ test.describe('Basic Form submission and validation', () => {
     await expectError(page, 'Email is required');
     await expectSubmissionFailure(page);
   });
+
+
 
 // Scenario: Invalid email address is rejected
 // When the user enters a valid value into the First Name field
@@ -73,4 +98,36 @@ test.describe('Basic Form submission and validation', () => {
     await expectError(page, 'Email must be a valid email');
     await expectSubmissionFailure(page);
   });
+});
+
+
+test.describe('Survey submission and validation', () => {
+
+  test.beforeEach(async ({ page }) => {
+    await openBasicForm(page);
+    await expect(page.getByLabel('survey')).toBeVisible();
+  });
+
+  // Scenario: Successful survey submission with all questions answered
+  test('Survey is submitted successfully when all questions are answered', async ({ page }) => {
+    await answerSurveyQuestions(page);
+    await submitForm(page);
+
+    await expectSubmissionSuccess(page);
+  });
+
+  // Scenario: Survey submission fails when at least one question is unanswered
+  test('Survey submission fails when a question is left unanswered', async ({ page }) => {
+    await answerSurveyQuestions(page, true);
+
+    await submitForm(page);
+
+    await expect(page.locator('.has-error')).toBeVisible();
+    await expectSubmissionFailure(page);
+  });
+
+  test('Survey radio questions allow only one option to be selected', async ({ page }) => {
+  await selectMultipleOptions(page);
+});
+
 });
