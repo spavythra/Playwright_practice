@@ -33,7 +33,7 @@ test.describe('Basic Form submission and validation', () => {
 // Then validation error messages should be displayed for required fields
 // And the form should not be submitted
 
-  test('Submission fails when all required fields are empty', async ({ page }) => {
+  test('Submission fails when any required fields are empty', async ({ page }) => {
     await submitForm(page);
 
     await expectError(page, 'First Name is required');
