@@ -110,3 +110,4 @@ npx playwright test ./fileName.spec.ts --ui
 
 Below is an example test from the user-story-driven suite validating form submission behavior.
 
+![Basic Form Test Example](./Snapshots/InvalidEmailDemo.png)
