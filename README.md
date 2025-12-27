@@ -20,12 +20,12 @@ User stories were treated as the single source of truth. No additional validatio
 *	Submission is unsuccessful when all the required fields are missing
 *	Invalid email addresses are blocked from submission
 
-### Extended Coverage (Exploratory & Interest-Driven)
+### Extended Coverage (Interest-Driven)
 In addition to the core coverage, a small set of extended tests is included to express my interest and product understanding.
 
 These tests are clearly separated from user-story-driven tests and derived based on reasonable UI observations (e.g., required fields, radio button behavior)
 
-#### Exploratory test suites (Covered in basicForm_extended)
+#### Derived test suites (Covered in basicForm_extended)
 
 *	Submission is unsuccessful when Firstname is missing
 *	Submission is unsuccessful when Lastname missing
