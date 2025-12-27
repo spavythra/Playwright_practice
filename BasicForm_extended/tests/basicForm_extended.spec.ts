@@ -55,7 +55,7 @@ test.describe('Basic Form submission and validation', () => {
     await expectSubmissionFailure(page);
   });
 
-  test('Submission fails when Firstname is missing', async ({ page }) => {
+  test('Submission fails when Firstname is empty', async ({ page }) => {
     await fillForm(page, {
       lastName: 'Subramaniyam',
       email: 'example@example.com',
@@ -66,7 +66,7 @@ test.describe('Basic Form submission and validation', () => {
     await expectSubmissionFailure(page);
   });
 
-  test('Submission fails when Email is missing', async ({ page }) => {
+  test('Submission fails when Email is empty', async ({ page }) => {
     await fillForm(page, {
       firstName: 'Pavithra',
       lastName: 'Subramaniyam',
@@ -98,15 +98,6 @@ test.describe('Basic Form submission and validation', () => {
     await expectError(page, 'Email must be a valid email');
     await expectSubmissionFailure(page);
   });
-});
-
-
-test.describe('Survey submission and validation', () => {
-
-  test.beforeEach(async ({ page }) => {
-    await openBasicForm(page);
-    await expect(page.getByLabel('survey')).toBeVisible();
-  });
 
   // Scenario: Successful survey submission with all questions answered
   test('Survey is submitted successfully when all questions are answered', async ({ page }) => {
@@ -126,8 +117,9 @@ test.describe('Survey submission and validation', () => {
     await expectSubmissionFailure(page);
   });
 
-  test('Survey radio questions allow only one option to be selected', async ({ page }) => {
+  // Scenario: Survey questions allow only one option to be selected per question
+  test('Survey questions allow only one option to be selected per question', async ({ page }) => {
   await selectMultipleOptions(page);
+  });
 });
 
-});
