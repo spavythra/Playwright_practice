@@ -82,7 +82,7 @@ The following Playwright assertions are used in this assignment:
   * ```not.toBeChecked()```
       * previously selected radio option is deselected when another option is chosen
 
-## Known Limitations / Observations
+## Known Limitations / Observations / Test Classification
 ### A. User Story–Based Observations (Covered in basicForm_strict)
   * Submission is successful when all the required fields are filled
   * Submission is unsuccessful when all the required fields are missing
@@ -105,3 +105,8 @@ npm install
 npx playwright test
 ```
 npx playwright test ./fileName.spec.ts --ui
+
+## Example Test Case
+
+Below is an example test from the user-story-driven suite validating form submission behavior.
+
