@@ -1,9 +1,7 @@
 # Basic Form - Playwright Automation Assignment
 
 ## Overview
-This repository contains automated UI tests for the Basic Form from Form.io Angular demo application.
-
-The objective of this assignment is to design and implement automated UI tests based on the provided user stories using Playwright with Typescript. The focus is on validating expected user-interface behavior and demonstrating test-case validation rather than validating the demo application.
+This repository contains automated UI tests for the Basic Form from the below mentioned angular-demo application. The objective of this assignment is to design and implement automated UI tests based on the provided user stories using Playwright with Typescript. The focus is on validating expected user-interface behavior and demonstrating test-case validation rather than validating the demo application.
 
 #### Application under test:
 https://formio.github.io/angular-demo/#/
@@ -11,8 +9,7 @@ https://formio.github.io/angular-demo/#/
 ## Testing Approach
 
 ### Requirement-Driven Testing (Primary)
-The primary test suite is implemented strictly based on the provided user stories.
-User stories were treated as the single source of truth. No additional validation rules were assumed beyond these statements. Few requirements like name and email validations were deliberately excluded from tests.
+The primary test suite is implemented strictly based on the provided user stories. User stories were treated as the single source of truth. No additional validation rules were assumed beyond these statements. Few requirements like name and email validations were deliberately excluded from tests.
 
 #### User story-based test suite (Covered in basicForm_strict)
 
@@ -21,15 +18,12 @@ User stories were treated as the single source of truth. No additional validatio
 *	Invalid email addresses are blocked from submission
 
 ### Extended Coverage (Interest-Driven)
-In addition to the core coverage, a small set of extended tests is included to express my interest and product understanding.
+In addition to the core coverage, a small set of extended tests is included to express my interest and product understanding. These tests are clearly separated from user-story-driven tests and derived based on reasonable UI observations (e.g., required fields, radio button behavior)
 
-These tests are clearly separated from user-story-driven tests and derived based on reasonable UI observations (e.g., required fields, radio button behavior)
-
-#### Derived test suites (Covered in basicForm_extended)
+#### Derived test suite (Covered in basicForm_extended)
 
 *	Submission is unsuccessful when Firstname is missing
 *	Submission is unsuccessful when Lastname missing
-*	Submission is unsuccessful when survey missing
 *	Submission is unsuccessful when email is missing
 *	Submission is successful when all the survey questions are answered
 *	Survey questions allow only one option to be selected per question
