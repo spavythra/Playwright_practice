@@ -22,16 +22,16 @@ In addition to the core coverage, a small set of extended tests is included to e
 
 #### Derived test suite (Covered in basicForm_extended)
 
-*	Submission is unsuccessful when Firstname is missing
-*	Submission is unsuccessful when Lastname missing
-*	Submission is unsuccessful when email is missing
+*	Submission is unsuccessful when First Name is missing
+*	Submission is unsuccessful when Last Name missing
+*	Submission is unsuccessful when Email is missing
 *	Submission is successful when all the survey questions are answered
 *	Survey questions allow only one option to be selected per question
 *	Submission is unsuccessful when one or more survey questions are left unanswered
 
 These gaps are intentionally surfaced through failing tests.
 
-## Design requirements
+## Design considerations
 ### Locators
   * Role-based locators (```getByRole()```) for interactive elements such as buttons and links
   * Label-based locators (```getByLabel()```) for form controls where labels are semantically associated with inputs
@@ -51,6 +51,9 @@ The following Playwright assertions are used in this assignment:
 ### Determinism
 The tests are deterministic because they rely on Playwright’s auto-waiting and UI state assertions rather than fixed delays or timing assumptions.
 
+### Navigation
+Added navigation to simple form instead of visiting the URL directly to increase reusability (for other forms)
+
 ## How to Run the Tests
 ```bash
 npm install
@@ -66,4 +69,8 @@ npx playwright test --ui
 
 Below is an example test from the user-story-driven suite validating form submission behavior.
 
-![Basic Form Test Example](./Snapshots/InvalidEmailDemo.png)
+![Basic Form Test Example](./Snapshots/test_UI.png)
+
+Below is an example test from the interest-driven suite validating form submission behavior.
+
+![Basic Form Test Example](./Snapshots/test_UI_extended.png)
