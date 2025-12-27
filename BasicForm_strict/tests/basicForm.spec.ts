@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { openBasicForm, fillForm, submitForm, disabledSubmit } from './helpers/formLocators';
-import { expectSubmissionSuccess, expectSubmissionFailure, expectError } from './helpers/assertions';
+import { expectSubmissionSuccess, expectSubmissionFailure, expectError } from './helpers/errorMessage';
 
 test.describe('Basic Form submission and validation', () => {
 
