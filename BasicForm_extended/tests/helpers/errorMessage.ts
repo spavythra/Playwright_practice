@@ -5,7 +5,7 @@ export async function expectSubmissionSuccess(page: Page) {
 }
 
 export async function expectSubmissionFailure(page: Page) {
-  await expect(page.getByText('Submission Complete')).not.toBeVisible();
+    await expect(page.getByText('Submission Complete')).not.toBeVisible();
 }
 
 export async function expectError(page: Page, message: string) {

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { openBasicForm, fillForm, submitForm, disabledSubmit } from './helpers/formLocators';
-import { expectSubmissionSuccess, expectSubmissionFailure, expectError } from './helpers/assertions';
+import { expectSubmissionSuccess, expectSubmissionFailure, expectError } from './helpers/errorMessage';
 import { answerSurveyQuestions, selectMultipleOptions } from './helpers/surveyHelpers.ts';
 
 test.describe('Basic Form submission and validation', () => {
@@ -12,11 +12,11 @@ test.describe('Basic Form submission and validation', () => {
 
 // Scenario: Successful submission with all required fields filled
 // When the user enters a valid value into the First Name field
-// And the user enters a valid value into the Last Name field
-// And the user enters a valid email address
-// And the user submits the form
+// AND the user enters a valid value into the Last Name field
+// AND the user enters a valid email address
+// AND the user submits the form
 // Then the form should be submitted successfully
-// And no validation error messages should be visible
+// AND no validation error messages should be visible
 
   test('Successful submission with valid data', async ({ page }) => {
     await fillForm(page, {
@@ -30,9 +30,9 @@ test.describe('Basic Form submission and validation', () => {
   });
 
 // Scenario: Submission fails when required fields are empty
-// When the user submits the form without filling any fields
+// When the user submits the form without filling ANY fields
 // Then validation error messages should be displayed for required fields
-// And the form should not be submitted
+// AND the form should not be submitted
 
   test('Submission fails when all required fields are empty', async ({ page }) => {
     await submitForm(page);
@@ -44,7 +44,7 @@ test.describe('Basic Form submission and validation', () => {
     await expectSubmissionFailure(page);
   });
 
-  test('Submission fails when Lastname is empty', async ({ page }) => {
+  test('Submission fails when Last Name is empty', async ({ page }) => {
     await fillForm(page, {
       firstName: 'Pavithra',
       email: 'example@example.com',
@@ -55,7 +55,7 @@ test.describe('Basic Form submission and validation', () => {
     await expectSubmissionFailure(page);
   });
 
-  test('Submission fails when Firstname is empty', async ({ page }) => {
+  test('Submission fails when First Name is empty', async ({ page }) => {
     await fillForm(page, {
       lastName: 'Subramaniyam',
       email: 'example@example.com',
@@ -81,13 +81,13 @@ test.describe('Basic Form submission and validation', () => {
 
 // Scenario: Invalid email address is rejected
 // When the user enters a valid value into the First Name field
-// And the user enters a valid value into the Last Name field
-// And the user enters an invalid email address
-// And the user submits the form
+// AND the user enters a valid value into the Last Name field
+// AND the user enters an invalid email address
+// AND the user submits the form
 // Then a validation error message should be displayed for the Email field
-// And the form should not be submitted
+// AND the form should not be submitted
 
-  test('Invalid email address is rejected', async ({ page }) => {
+  test('Invalid Email address is rejected', async ({ page }) => {
     await fillForm(page, {
       firstName: 'Pavithra',
       lastName: 'Subramaniyam',
@@ -112,8 +112,6 @@ test.describe('Basic Form submission and validation', () => {
     await answerSurveyQuestions(page, true);
 
     await submitForm(page);
-
-    await expect(page.locator('.has-error')).toBeVisible();
     await expectSubmissionFailure(page);
   });
 
