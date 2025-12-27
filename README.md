@@ -18,7 +18,7 @@ The primary test suite is implemented strictly based on the provided user storie
 *	Invalid email addresses are blocked from submission
 
 ### Extended Coverage (Interest-Driven)
-In addition to the core coverage, a small set of extended tests is included to express my interest and product understanding. These tests are clearly separated from user-story-driven tests and derived based on reasonable UI observations (e.g., required fields, radio button behavior)
+In addition to the core coverage, a small set of extended tests is included to express my interest and product understanding. These tests are clearly separated from user-story-driven tests (assignment needs) and derived based on reasonable UI observations (e.g., required fields, radio button behavior)
 
 #### Derived test suite (Covered in basicForm_extended)
 
@@ -31,7 +31,7 @@ In addition to the core coverage, a small set of extended tests is included to e
 
 These gaps are intentionally surfaced through failing tests.
 
-## Design Rationale
+## Design requirements
 ### Locators
   * Role-based locators (```getByRole()```) for interactive elements such as buttons and links
   * Label-based locators (```getByLabel()```) for form controls where labels are semantically associated with inputs
@@ -47,6 +47,9 @@ The following Playwright assertions are used in this assignment:
   * ```toBeDisabled()```
   * ```toBeChecked()```
   * ```not.toBeChecked()```
+    
+### Determinism
+The tests are deterministic because they rely on Playwright’s auto-waiting and UI state assertions rather than fixed delays or timing assumptions.
 
 ## How to Run the Tests
 ```bash
