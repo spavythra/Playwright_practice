@@ -5,7 +5,7 @@ export async function expectSubmissionSuccess(page: Page) {
 }
 
 export async function expectSubmissionFailure(page: Page) {
-    await expect(page.locator('.alert.alert-success')).not.toBeVisible();;
+    await expect(page.locator('.alert.alert-success')).not.toBeVisible();
 }
 
 export async function expectError(page: Page, message: string) {

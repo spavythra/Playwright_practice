@@ -111,7 +111,7 @@ test.describe('Basic Form submission and validation', () => {
   test('Survey submission fails when a question is left unanswered', async ({ page }) => {
     await answerSurveyQuestions(page, true);
 
-    await submitForm(page);
+    await disabledSubmit(page);
     await expectSubmissionFailure(page);
   });
 
