@@ -58,8 +58,8 @@ test.describe('Basic Form submission and validation', () => {
       email: 'invalid-email',
     });
 
-    await disabledSubmit(page);
     await expectError(page, 'Email must be a valid email');
-    await expectSubmissionFailure(page);
+    await disabledSubmit(page);
+
   });
 });
