@@ -60,6 +60,6 @@ test.describe('Basic Form submission and validation', () => {
 
     await expectError(page, 'Email must be a valid email');
     await disabledSubmit(page);
-
+    // await expectSubmissionFailure(page); // submission successful message is not visible - validation is not required
   });
 });
