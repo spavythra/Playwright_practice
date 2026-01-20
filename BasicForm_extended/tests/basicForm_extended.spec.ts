@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { openBasicForm, fillForm, submitForm, disabledSubmit } from './helpers/formLocators';
 import { expectSubmissionSuccess, expectSubmissionFailure, expectError } from './helpers/errorMessage';
 import { answerSurveyQuestions, selectMultipleOptions } from './helpers/surveyHelpers.ts';

@@ -19,7 +19,7 @@ export async function answerSurveyQuestions(
   for (let i = 0; i < limit; i++) {
     await rows
       .nth(i)
-      .locator('input[type="radio"]')
+      .getByRole('radio')
       .first()
       .check();
   }
